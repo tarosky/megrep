@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>megrep - 画像圧縮比較ツール</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>megrep - 画像圧縮比較</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">総画像数:</span>
+                    <span id="total-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">平均圧縮率:</span>
+                    <span id="avg-compression">0%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">更新日時:</span>
+                    <span id="last-updated">-</span>
+                </div>
+            </div>
+            <div class="filters">
+                <input type="text" id="search-input" placeholder="ファイル名で検索...">
+                <select id="sort-select">
+                    <option value="name">ファイル名順</option>
+                    <option value="size">ファイルサイズ順</option>
+                    <option value="avif-compression">AVIF圧縮率順</option>
+                    <option value="webp-compression">WebP圧縮率順</option>
+                </select>
+                <button id="load-more" style="display: none;">さらに読み込む</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="loading" class="loading">
+                <div class="loading-spinner"></div>
+                <p>データを読み込み中...</p>
+            </div>
+
+            <div id="no-data" class="no-data" style="display: none;">
+                <p>画像データが見つかりません。</p>
+                <p><code>npm run convert</code> を実行して画像を変換してください。</p>
+            </div>
+
+            <div id="image-grid" class="image-grid" style="display: none;">
+                <!-- 画像比較項目がここに動的に挿入されます -->
+            </div>
+        </main>
+    </div>
+
+    <!-- 画像拡大モーダル -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <button class="tab-button active" data-tab="original">オリジナル</button>
+                    <button class="tab-button" data-tab="avif">AVIF</button>
+                    <button class="tab-button" data-tab="webp">WebP</button>
+                </div>
+                <div class="modal-image-container">
+                    <img id="modal-image" src="" alt="">
+                    <div id="modal-info" class="modal-info"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

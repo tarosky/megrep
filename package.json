@@ -1,0 +1,36 @@
+{
+  "name": "megrep",
+  "version": "1.0.0",
+  "description": "画像などの軽量化ツールを比較するツール",
+  "main": "src/convert.js",
+  "scripts": {
+    "convert": "node src/convert.js",
+    "serve": "node src/serve.js",
+    "build": "node src/build.js",
+    "sample": "node src/sample.js"
+  },
+  "keywords": ["image", "compression", "avif", "webp", "comparison"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "fs-extra": "^11.0.0",
+    "glob": "^10.0.0",
+    "path": "^0.12.7"
+  },
+  "megrep": {
+    "avif": {
+      "quality": 60,
+      "speed": 6
+    },
+    "webp": {
+      "quality": 80,
+      "method": 4,
+      "metadata": "icc"
+    },
+    "supportedFormats": ["jpg", "jpeg", "png", "tiff", "bmp"]
+  }
+}

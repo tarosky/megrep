@@ -1,0 +1,8 @@
+/webp/*
+/contents/*
+/avif/*
+!/webp/.gitkeep
+!/avif/.gitkeep
+!/contents/.gitkeep
+node_modules
+/contents_original
